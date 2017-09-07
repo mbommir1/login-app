@@ -1,0 +1,8 @@
+{
+	"database" : {
+	  "HOST" : "localhost",
+	  "USER_NAME" : "root",
+	  "PASSWORD" : "",
+	  "DB_NAME" : "mbommir1"
+	}
+}

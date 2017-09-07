@@ -1,17 +1,20 @@
 var mysql = require('mysql');
 var helpers = require('./helpers');
+var config = require('config');
 var md5 = require('md5');
-    
-var DB_NAME = 'mbommir1';
+
+
 var TABLE_USERS = 'users';
 var TABLE_LOGINS = 'logins';
 var TABLE_EVENTS = 'events';
 
+var DB_NAME = config.get('database.DB_NAME');
+
 var connectDB = function() {
   var con = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-  	password: '',
+    host: config.get('database.HOST'),
+    user: config.get('database.USER_NAME'),
+  	password: config.get('database.PASSWORD'),
     database: DB_NAME
   });
   return con;
@@ -19,9 +22,9 @@ var connectDB = function() {
 
 var connectSQL = function() {
   var con = mysql.createConnection({
-    host: 'localhost',
-  	user: 'root',
-  	password: ''
+    host: config.get('database.HOST'),
+  	user: config.get('database.USER_NAME'),
+  	password: config.get('database.PASSWORD')
   });
   return con;
 };

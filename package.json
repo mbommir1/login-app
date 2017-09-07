@@ -24,6 +24,7 @@
   },
   "author": "Mahender Reddy",
   "devDependencies": {
+    "config": "^1.26.2",
     "mysql": "^2.14.1"
   }
 }
