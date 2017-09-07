@@ -34,11 +34,14 @@ exports.start = function() {
         res.render('signup');
 	});
 	
-	app.post('/signup', urlencodedParser, function(req, res){
+	app.post('/signup', urlencodedParser, function(req, res) {
       console.log('request for signup');
-      if(!req.body.user_name || !req.body.password){
+      if(!req.body.user_name || !req.body.password) {
         res.status('400');
-        res.send("Invalid credentials!");
+        res.render('signup', {message: 'Please enter both user name and password!'});
+      } else if (!helpers.isValidUserName(req.body.user_name)) {
+        res.status('400');
+        res.render('signup', {message: 'Only alphanumeric charaters are allowed in the username!'});
       } else {
         db.hasUser(req.body.user_name, function(err, count) {
             if (count > 0) {
@@ -113,7 +116,7 @@ exports.start = function() {
       console.log('request user log out');
       req.session.destroy(function() { // destroy session
         res.clearCookie('user'); // clear user name cookie
-        res.render('logout');
+        res.redirect(302, '/login');
         console.log('user logged out');
       });
     });

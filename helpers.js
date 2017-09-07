@@ -20,3 +20,8 @@ exports.getFormattedAddInfo = function (value, element, type) {
   
   return fmtStr;
 }
+
+exports.isValidUserName = function (name) {
+  var regex = /^[a-zA-Z0-9_]+$/; // regex which matches only alphanumeric and `_` characters.
+  return regex.test(name);
+}

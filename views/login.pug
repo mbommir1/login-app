@@ -5,9 +5,11 @@ html
     link(href='/css/base.css', rel='stylesheet')
   body
     div.main-container.container
-      if(message)
-        h4 #{message}
       form.form-horizontal.col-sm-12(action = "/login" method = "POST")
+        if(message)
+          div.form-group
+            div.col-sm-offset-2.col-sm-8
+              div.alert.alert-danger #{message}
         div.form-group
           label.col-sm-2.control-label User Name
           div.col-sm-8

@@ -118,7 +118,6 @@ exports.getUser = function (name, callback) {
   var con = connectDB();
   con.connect(function(err) {
     var sql = `SELECT * FROM ${TABLE_USERS} WHERE user_name = '${name}'`;
-    console.log(sql);
     con.query(sql, function (err, result) {
       if (err) throw err;
       callback(err, result[0]);
