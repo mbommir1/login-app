@@ -1,0 +1,23 @@
+html
+  head
+    title Login
+    link(href='/css/bootstrap.css', rel='stylesheet')
+    link(href='/css/base.css', rel='stylesheet')
+  body
+    div.main-container.container
+      if(message)
+        h4 #{message}
+      form.form-horizontal.col-sm-12(action = "/login" method = "POST")
+        div.form-group
+          label.col-sm-2.control-label User Name
+          div.col-sm-8
+            input.form-control(name = "user_name" type = "text" required)
+        div.form-group
+          label.col-sm-2.control-label Password
+          div.col-sm-8
+            input.form-control(name = "password" type = "password" required)
+        div.form-group 
+          div.col-sm-offset-2.col-sm-8
+            div.btn-toolbar
+              button.btn.btn-default(type = "Submit") Log in
+              a.btn.btn-default(role= "button" href="/signup") Create new account

@@ -1,0 +1,86 @@
+html
+  head
+    title Index
+    link(href='/css/bootstrap.css', rel='stylesheet')
+    link(href='/css/base.css', rel='stylesheet')
+  body
+    nav.navbar.navbar-static-top
+      div.container
+        div.navbar-header
+          h4 User Name: #{name}
+        div.pull-right.navbar-header
+          h4
+            a(href="/logout") Logout
+    
+    div.container
+      h4.text-center.alert.alert-warning
+        a(href='https://stackoverflow.com/questions/tagged/java?sort=frequent&pageSize=15' target='_blank') Stackoverflow link
+      
+      div.form-group
+        div.row
+          div.col-md-3
+            table.table.table-responsive.table-bordered
+              thead
+                th #
+                th.text-center Login Time
+              each val, index in result.login_data
+                tr
+                  td #{index+1}
+                  td.text-center #{val.time}
+          div.col-md-9
+            table.table.table-responsive.table-bordered
+              thead
+                th Event Type
+                th Description
+              tr
+                td Scroll up
+                td Conveys that he user is interested in the answers of a question.
+              tr
+                td Scroll Down
+                td Conveys that the user is interested in the answers of a question.
+              tr
+                td Upvote
+                td Conveys the the user has upvoted an answer for a question.
+              tr
+                td Downvote
+                td Conveys the the user has downvoted an answer for a question.
+              tr
+                td Search
+                td To capture the user's topics of interest.
+              tr
+                td Ask Question
+                td Conveys that the user's question is not present in the website and wants to post a new one. 
+      
+      table.table.table-responsive
+        thead
+          th.text-center #
+          th.text-center Event Type
+          th.text-center URL
+          th.text-center Additional Info
+          th.text-center Event Time
+          if(result.event_data[0])  
+            each val, index in result.event_data
+              tr
+                td #{index+1}
+                case val.event_type
+                  when 'scroll_up'
+                    td Scroll Up
+                  when 'scroll_down'
+                    td Scroll Down
+                  when 'up_vote'
+                    td Upvote
+                  when 'down_vote'
+                    td Downvote
+                  when 'ask_question'
+                    td Ask Question
+                  when 'search'
+                    td Search
+                td.wrap-text
+                  a(href = val.url target='_blank') #{val.url}
+                td.text-center.wrap-text.add-info #{val.value}
+                td.text-right #{val.time}
+          else
+              tr.text-center 
+                td(colspan="5") No Tracking Data Available
+            
+            

@@ -1,0 +1,23 @@
+html
+  head
+    title Signup
+    link(href='/css/bootstrap.css', rel='stylesheet')
+    link(href='/css/base.css', rel='stylesheet')
+  body
+    div.main-container.container
+      form.form-horizontal.col-sm-12(action = "/signup" method = "POST")
+        if(message)
+          div.form-group
+            div.col-sm-offset-2.col-sm-8
+              div.alert.alert-danger #{message}
+        div.form-group
+          label.col-sm-2.control-label User Name
+          div.col-sm-8
+            input.form-control(name = "user_name" type = "text" required)
+        div.form-group
+          label.col-sm-2.control-label Password
+          div.col-sm-8
+            input.form-control(name = "password" type = "password" required)
+        div.form-group 
+          div.col-sm-offset-2.col-sm-8
+            button.btn.btn-default(type = "Submit") Sign me up!
